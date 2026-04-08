@@ -1,0 +1,154 @@
+.App {
+  min-height: 100vh;
+  background: var(--bg-primary);
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 32px;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: 0 2px 8px var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.app-header h1 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+nav.navigation {
+  display: flex;
+  gap: 8px;
+}
+
+nav.navigation a {
+  color: var(--text-primary);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 10px 16px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+nav.navigation a:hover {
+  background-color: var(--bg-primary);
+  color: var(--button-bg);
+}
+
+nav.navigation a.active {
+  background-color: var(--button-bg);
+  color: var(--button-text);
+}
+
+nav.navigation a:active {
+  transform: scale(0.98);
+}
+
+.main-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 24px;
+}
+
+@media (max-width: 768px) {
+  .app-header {
+    padding: 12px 16px;
+    flex-wrap: wrap;
+  }
+
+  .header-content {
+    gap: 16px;
+  }
+
+  .app-header h1 {
+    font-size: 1.25rem;
+  }
+
+  nav.navigation {
+    gap: 4px;
+  }
+
+  nav.navigation a {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+
+  .main-content {
+    padding: 24px 16px;
+  }
+}
+
+.theme-toggle {
+  background: var(--bg-primary);
+  border: 2px solid var(--border-color);
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+  border-color: var(--button-bg);
+}
+
+.theme-toggle:active {
+  transform: scale(0.95);
+}
+
+.about-page {
+  max-width: 800px;
+  margin: 0 auto;
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 2px 8px var(--shadow);
+  line-height: 1.7;
+}
+
+.about-page h2 {
+  color: var(--text-primary);
+  margin-bottom: 20px;
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+
+.about-page p {
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+  font-size: 1.05rem;
+}
+
+@media (max-width: 768px) {
+  .about-page {
+    padding: 24px;
+  }
+
+  .about-page h2 {
+    font-size: 1.5rem;
+  }
+
+  .about-page p {
+    font-size: 1rem;
+  }
+}

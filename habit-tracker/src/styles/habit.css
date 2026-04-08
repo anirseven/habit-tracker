@@ -1,0 +1,303 @@
+/* Form Container */
+.habit-form-container {
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px var(--shadow);
+  margin-bottom: 32px;
+}
+
+.form-title {
+  margin: 0 0 20px 0;
+  color: var(--text-primary);
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.habit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-row {
+  display: flex;
+  gap: 16px;
+}
+
+.form-row-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* Form Fields */
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.form-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.form-input {
+  padding: 12px 16px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--button-bg);
+  box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.1);
+}
+
+.form-input::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.6;
+}
+
+/* Submit Button */
+.submit-button {
+  padding: 14px 24px;
+  background: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.submit-button:hover {
+  background: var(--button-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px var(--shadow);
+}
+
+.submit-button:active {
+  transform: translateY(0);
+}
+
+.submit-button span {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Habit List Container */
+.habit-list-container {
+  margin-top: 32px;
+}
+
+.list-title {
+  margin: 0 0 24px 0;
+  color: var(--text-primary);
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+/* Date Group */
+.habit-date-group {
+  margin-bottom: 32px;
+}
+
+.habit-date-group:last-child {
+  margin-bottom: 0;
+}
+
+.date-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.date-title {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.habit-count {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  background: var(--bg-primary);
+  padding: 4px 12px;
+  border-radius: 12px;
+}
+
+.habit-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+/* Habit Cards */
+.habit-card {
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px var(--shadow);
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+}
+
+.habit-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px var(--shadow);
+  border-color: var(--border-color);
+}
+
+.habit-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.habit-name {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  flex: 1;
+  word-break: break-word;
+}
+
+.habit-status {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Status colors */
+.status-completed {
+  background: #c8e6c9;
+  color: #256029;
+}
+
+.status-todo {
+  background: #fff9c4;
+  color: #8d6e00;
+}
+
+.status-notcompleted {
+  background: #ffcdd2;
+  color: #b71c1c;
+}
+
+.status-skipped {
+  background: #e0e0e0;
+  color: #424242;
+}
+
+
+/* Empty State */
+.habit-list-empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-secondary);
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  margin-top: 32px;
+}
+
+.empty-icon {
+  font-size: 4rem;
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+
+.habit-list-empty p {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 8px 0;
+}
+
+.habit-list-empty span {
+  font-size: 0.95rem;
+  opacity: 0.7;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .habit-form-container {
+    padding: 20px;
+  }
+
+  .form-row-split {
+    grid-template-columns: 1fr;
+  }
+
+  .habit-date-group {
+    margin-bottom: 24px;
+  }
+
+  .date-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .date-title {
+    font-size: 1rem;
+  }
+
+  .habit-list {
+    grid-template-columns: 1fr;
+  }
+
+  .habit-card {
+    padding: 16px;
+  }
+
+  .habit-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .habit-status {
+    align-self: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-title,
+  .list-title {
+    font-size: 1.1rem;
+  }
+
+  .habit-form-container {
+    padding: 16px;
+  }
+
+  .submit-button {
+    padding: 12px 20px;
+    font-size: 15px;
+  }
+}
