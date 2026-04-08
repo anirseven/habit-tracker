@@ -4,16 +4,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Structure
 
-This is a React-based habit tracking application built with Create React App. The main application code is located in the `habit-tracker/` subdirectory.
-
-**Important**: All npm commands must be run from the `habit-tracker/` directory, not the repository root.
+This is a React-based habit tracking application built with Create React App.
 
 ```
-habitTracker/
+habit-tracker/                   # Repository root
 ├── CLAUDE.md                    # This file
-└── habit-tracker/               # Main React application
-    ├── public/                  # Static assets
-    ├── src/
+├── public/                      # Static assets
+├── src/
     │   ├── components/          # Reusable React components
     │   │   ├── HabitForm.js     # Main form component for adding habits
     │   │   ├── HabitList.js     # Grid display of habit cards
@@ -33,19 +30,19 @@ habitTracker/
     │   │   └── trends.css       # Trends page and analytics styles
     │   ├── utils/               # Utility functions
     │   │   └── habitAnalytics.js # Habit statistics and trend calculations
-    │   ├── App.js               # Root component with router setup
-    │   ├── App.css              # Layout, header, nav, theme styles
-    │   ├── index.js             # App entry point
-    │   ├── index.css            # CSS variables and global styles
-    │   └── setupTests.js        # Test configuration
-    ├── package.json
-    └── README.md
+│   ├── App.js                   # Root component with router setup
+│   ├── App.css                  # Layout, header, nav, theme styles
+│   ├── index.js                 # App entry point
+│   ├── index.css                # CSS variables and global styles
+│   └── setupTests.js            # Test configuration
+├── package.json
+├── vercel.json                  # Vercel deployment configuration
+└── README.md
 ```
 
 ## Development Commands
 
 ```bash
-cd habit-tracker  # Navigate to the app directory first
 npm start         # Start development server at http://localhost:3000
 npm test          # Run tests in interactive watch mode
 npm run build     # Create production build in build/ folder
