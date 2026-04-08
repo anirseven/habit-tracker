@@ -1,4 +1,6 @@
-function HabitList({ habits }) {
+import { getCategoryById } from '../constants/categories';
+
+function HabitList({ habits, onEdit, onDelete, selectedCategory }) {
   const formatDateHeader = (dateString) => {
     const date = new Date(dateString + 'T00:00:00');
     const today = new Date();
@@ -33,8 +35,14 @@ function HabitList({ habits }) {
   };
 
   const groupHabitsByDate = (habits) => {
+    // Filter by category if selected
+    let filteredHabits = habits;
+    if (selectedCategory && selectedCategory !== 'all') {
+      filteredHabits = habits.filter(h => h.category === selectedCategory);
+    }
+
     const grouped = {};
-    habits.forEach((habit) => {
+    filteredHabits.forEach((habit) => {
       if (!grouped[habit.date]) {
         grouped[habit.date] = [];
       }
@@ -50,6 +58,12 @@ function HabitList({ habits }) {
       date,
       habits: grouped[date]
     }));
+  };
+
+  const handleDelete = (habit) => {
+    if (window.confirm(`Delete "${habit.habit}"?`)) {
+      onDelete(habit.id);
+    }
   };
 
   if (habits.length === 0) {
@@ -74,18 +88,45 @@ function HabitList({ habits }) {
             <span className="habit-count">{dateHabits.length} {dateHabits.length === 1 ? 'habit' : 'habits'}</span>
           </div>
           <div className="habit-list">
-            {dateHabits.map((h) => (
-              <div key={h.id} className="habit-card">
-                <div className="habit-card-header">
-                  <h3 className="habit-name">{h.habit}</h3>
-                  <span
-                    className={`habit-status status-${h.status.replace(/\s+/g, "").toLowerCase()}`}
-                  >
-                    {getStatusIcon(h.status)} {h.status}
-                  </span>
+            {dateHabits.map((h) => {
+              const category = getCategoryById(h.category || 'other');
+              return (
+                <div key={h.id} className="habit-card">
+                  <div className="habit-card-header">
+                    <div className="habit-info">
+                      <h3 className="habit-name">{h.habit}</h3>
+                      <span
+                        className="category-badge"
+                        style={{ backgroundColor: category.color + '20', color: category.color }}
+                      >
+                        {category.icon} {category.name}
+                      </span>
+                    </div>
+                    <span
+                      className={`habit-status status-${h.status.replace(/\s+/g, "").toLowerCase()}`}
+                    >
+                      {getStatusIcon(h.status)} {h.status}
+                    </span>
+                  </div>
+                  <div className="habit-card-actions">
+                    <button
+                      className="action-btn edit-btn"
+                      onClick={() => onEdit(h)}
+                      title="Edit habit"
+                    >
+                      ✏️ Edit
+                    </button>
+                    <button
+                      className="action-btn delete-btn"
+                      onClick={() => handleDelete(h)}
+                      title="Delete habit"
+                    >
+                      🗑️ Delete
+                    </button>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       ))}

@@ -1,4 +1,5 @@
 import { calculateHabitStats } from "../utils/habitAnalytics";
+import ProgressBar from "../components/ProgressBar";
 
 function Trends({ habits }) {
   const stats = calculateHabitStats(habits);
@@ -13,13 +14,6 @@ function Trends({ habits }) {
     if (trend === 'improving') return 'Improving';
     if (trend === 'declining') return 'Declining';
     return 'Stable';
-  };
-
-  const getCompletionColor = (rate) => {
-    if (rate >= 80) return 'excellent';
-    if (rate >= 60) return 'good';
-    if (rate >= 40) return 'fair';
-    return 'needs-work';
   };
 
   if (habits.length === 0) {
@@ -142,12 +136,7 @@ function Trends({ habits }) {
               </div>
 
               <div className="col-rate">
-                <div className="progress-bar-container">
-                  <div
-                    className={`progress-bar ${getCompletionColor(habit.completionRate)}`}
-                    style={{ width: `${habit.completionRate}%` }}
-                  />
-                </div>
+                <ProgressBar value={habit.completionRate} showPercent={false} />
                 <div className="progress-label">{habit.completionRate}%</div>
               </div>
 

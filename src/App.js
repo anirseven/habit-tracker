@@ -30,6 +30,16 @@ function App() {
     setHabits((prev) => [habitEntry, ...prev]);
   };
 
+  const handleUpdateHabit = (updatedHabit) => {
+    setHabits((prev) =>
+      prev.map((habit) => (habit.id === updatedHabit.id ? updatedHabit : habit))
+    );
+  };
+
+  const handleDeleteHabit = (habitId) => {
+    setHabits((prev) => prev.filter((habit) => habit.id !== habitId));
+  };
+
   return (
     <Router>
       <div className="App">
@@ -42,7 +52,17 @@ function App() {
         </header>
         <main className="main-content">
           <Routes>
-            <Route path="/" element={<Home habits={habits} onAddHabit={handleAddHabit} />} />
+            <Route
+              path="/"
+              element={
+                <Home
+                  habits={habits}
+                  onAddHabit={handleAddHabit}
+                  onUpdateHabit={handleUpdateHabit}
+                  onDeleteHabit={handleDeleteHabit}
+                />
+              }
+            />
             <Route path="/trends" element={<Trends habits={habits} />} />
             <Route path="/about" element={<About />} />
           </Routes>

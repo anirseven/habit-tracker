@@ -1,0 +1,20 @@
+/* Summary Section Container */
+.summary-section {
+  margin-bottom: 32px;
+}
+
+/* Mobile: 2x2 grid */
+@media (max-width: 768px) {
+  .summary-section .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+/* Mobile small: single column */
+@media (max-width: 480px) {
+  .summary-section .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
