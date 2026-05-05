@@ -20,7 +20,7 @@ A modern, feature-rich habit tracking application built with React that helps us
 
 Habit Tracker is a browser-based application that enables users to track daily habits, monitor progress, and gain insights through comprehensive analytics. All data is stored locally in the browser using localStorage, ensuring privacy and instant access without requiring backend infrastructure.
 
-**Live Demo:** [Deployed on Vercel](https://your-app-url.vercel.app) *(configure your deployment URL)*
+**Live Demo:** [Deployed on Vercel](https://habit-tracker-one-dun-53.vercel.app/) *(configure your deployment URL)*
 
 ## ✨ Features
 
