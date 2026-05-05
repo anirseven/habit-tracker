@@ -5,6 +5,7 @@
 **Usage:** `/ui-component [component-name] [type]`
 
 **Examples:**
+
 - `/ui-component ProgressBar reusable`
 - `/ui-component Dashboard page`
 - `/ui-component ConfirmDialog modal`
@@ -14,33 +15,39 @@
 ## Component Types
 
 ### 1. Reusable Components (`/src/components/`)
+
 Small, reusable UI building blocks that can be used across multiple pages.
 
 **Examples:** StatCard, TextInput, DateSelector, StatusSelector, ThemeToggle
 
 **Characteristics:**
+
 - Accept props for customization
 - No direct state management (unless internal UI state)
 - Highly composable
 - Single responsibility
 
 ### 2. Container Components (`/src/components/`)
+
 Components that compose multiple smaller components and manage local state.
 
 **Examples:** HabitForm, HabitList, SummaryCards, Navigation
 
 **Characteristics:**
+
 - Compose multiple reusable components
 - May manage local state (e.g., form state)
 - Handle user interactions
 - Pass data down to child components
 
 ### 3. Page Components (`/src/pages/`)
+
 Top-level route components that represent entire pages.
 
 **Examples:** Home, Trends, About
 
 **Characteristics:**
+
 - Mapped to routes in App.js
 - Receive data via props from App.js
 - Compose container and reusable components
@@ -62,18 +69,18 @@ Utility File:    camelCase.js      (e.g., habitAnalytics.js)
 
 ```javascript
 // 1. React imports
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 // 2. Component imports (alphabetical)
-import ChildComponent from './ChildComponent';
-import OtherComponent from './OtherComponent';
+import ChildComponent from "./ChildComponent";
+import OtherComponent from "./OtherComponent";
 
 // 3. Utility/hook imports
-import { helperFunction } from '../utils/helpers';
-import useCustomHook from '../hooks/useCustomHook';
+import { helperFunction } from "../utils/helpers";
+import useCustomHook from "../hooks/useCustomHook";
 
 // 4. Style imports (last)
-import '../styles/component-name.css';
+import "../styles/component-name.css";
 
 // 5. Component definition (use function declaration, not arrow function)
 function ComponentName({ prop1, prop2, onAction, className }) {
@@ -97,7 +104,7 @@ function ComponentName({ prop1, prop2, onAction, className }) {
 
   // 10. Main render
   return (
-    <div className={`component-name ${className || ''}`}>
+    <div className={`component-name ${className || ""}`}>
       {/* Component JSX */}
     </div>
   );
@@ -115,16 +122,24 @@ export default ComponentName;
 
 ```javascript
 // Data props: nouns
-{ habit, habits, user, userData }
+{
+  (habit, habits, user, userData);
+}
 
 // Action props: verb prefixed with "on"
-{ onAdd, onDelete, onUpdate, onSubmit, onChange }
+{
+  (onAdd, onDelete, onUpdate, onSubmit, onChange);
+}
 
 // Boolean props: adjectives or "is/has" prefix
-{ isActive, isLoading, hasError, disabled, visible }
+{
+  (isActive, isLoading, hasError, disabled, visible);
+}
 
 // Style props: className (not style object)
-{ className }
+{
+  className;
+}
 ```
 
 ### Props Destructuring
@@ -145,13 +160,13 @@ function Component(props) {
 
 ```javascript
 // Method 1: Default parameters
-function Component({ title = 'Default Title', count = 0 }) {
+function Component({ title = "Default Title", count = 0 }) {
   // ...
 }
 
 // Method 2: Fallback with ||
 function Component({ className }) {
-  return <div className={`card ${className || ''}`} />;
+  return <div className={`card ${className || ""}`} />;
 }
 
 // Method 3: Optional chaining for callbacks
@@ -312,13 +327,13 @@ Use for UI-only state that doesn't need to be shared:
 ```javascript
 function Component() {
   // ✅ GOOD: Form input state
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
 
   // ✅ GOOD: UI toggle state
   const [isOpen, setIsOpen] = useState(false);
 
   // ✅ GOOD: Local filter state
-  const [selectedFilter, setSelectedFilter] = useState('all');
+  const [selectedFilter, setSelectedFilter] = useState("all");
 }
 ```
 
@@ -357,7 +372,9 @@ function HabitList({ habits }) {
 
   return (
     <div className="habit-list">
-      {habits.map(habit => <HabitCard key={habit.id} habit={habit} />)}
+      {habits.map((habit) => (
+        <HabitCard key={habit.id} habit={habit} />
+      ))}
     </div>
   );
 }
@@ -367,20 +384,30 @@ function HabitList({ habits }) {
 
 ```javascript
 // ✅ GOOD: Show element only if condition is true
-{isLoading && <LoadingSpinner />}
+{
+  isLoading && <LoadingSpinner />;
+}
 
-{error && <ErrorMessage message={error} />}
+{
+  error && <ErrorMessage message={error} />;
+}
 
-{habits.length > 0 && <SummaryCards habits={habits} />}
+{
+  habits.length > 0 && <SummaryCards habits={habits} />;
+}
 ```
 
 ### Conditional Rendering with Ternary
 
 ```javascript
 // ✅ GOOD: Toggle between two states
-{isEditing ? <EditForm /> : <ViewMode />}
+{
+  isEditing ? <EditForm /> : <ViewMode />;
+}
 
-{habits.length > 0 ? <HabitList habits={habits} /> : <EmptyState />}
+{
+  habits.length > 0 ? <HabitList habits={habits} /> : <EmptyState />;
+}
 ```
 
 ---
@@ -391,14 +418,14 @@ function HabitList({ habits }) {
 
 ```javascript
 // ✅ GOOD: handleAction format
-const handleClick = () => { };
-const handleSubmit = () => { };
-const handleChange = (e) => { };
-const handleSave = (data) => { };
+const handleClick = () => {};
+const handleSubmit = () => {};
+const handleChange = (e) => {};
+const handleSave = (data) => {};
 
 // ❌ BAD: Unclear names
-const onClick = () => { };
-const doSomething = () => { };
+const onClick = () => {};
+const doSomething = () => {};
 ```
 
 ### Prop Callbacks
@@ -439,6 +466,7 @@ const handleLinkClick = (e) => {
 Before considering a component complete, verify:
 
 ### Functionality
+
 - [ ] Component renders without errors
 - [ ] All props are properly handled
 - [ ] Event handlers work as expected
@@ -446,6 +474,7 @@ Before considering a component complete, verify:
 - [ ] Optional props have sensible defaults
 
 ### Styling
+
 - [ ] Component uses CSS variables (no hardcoded colors)
 - [ ] Responsive on mobile (480px), tablet (768px), desktop
 - [ ] Works in both light and dark themes
@@ -453,12 +482,14 @@ Before considering a component complete, verify:
 - [ ] Spacing and alignment are consistent with design system
 
 ### Integration
+
 - [ ] Component integrates properly with parent components
 - [ ] No prop drilling issues (data flows logically)
 - [ ] No duplicate state management
 - [ ] Re-renders appropriately when props change
 
 ### Accessibility
+
 - [ ] Semantic HTML elements used where appropriate
 - [ ] Interactive elements are keyboard accessible
 - [ ] Form inputs have associated labels
@@ -496,9 +527,9 @@ function TextInput({ label, value, onChange, placeholder, required }) {
 function Card({ icon, title, value, subtitle, onClick, className }) {
   return (
     <div
-      className={`card ${className || ''}`}
+      className={`card ${className || ""}`}
       onClick={onClick}
-      role={onClick ? 'button' : undefined}
+      role={onClick ? "button" : undefined}
       tabIndex={onClick ? 0 : undefined}
     >
       {icon && <div className="card-icon">{icon}</div>}
@@ -519,7 +550,7 @@ function ItemGrid({ items, onItemClick, renderItem, emptyMessage }) {
   if (!items || items.length === 0) {
     return (
       <div className="empty-state">
-        <p>{emptyMessage || 'No items to display'}</p>
+        <p>{emptyMessage || "No items to display"}</p>
       </div>
     );
   }
@@ -539,7 +570,7 @@ function ItemGrid({ items, onItemClick, renderItem, emptyMessage }) {
 ### Pattern 4: Analytics/Utility Usage
 
 ```javascript
-import { calculateStats } from '../utils/analytics';
+import { calculateStats } from "../utils/analytics";
 
 function StatsSummary({ data }) {
   // Calculate stats from raw data
@@ -584,11 +615,11 @@ function StatsSummary({ data }) {
 
 ```javascript
 // ❌ BAD
-props.habit.status = 'Completed';  // Never mutate props!
-habits.push(newHabit);             // Never mutate state!
+props.habit.status = "Completed"; // Never mutate props!
+habits.push(newHabit); // Never mutate state!
 
 // ✅ GOOD
-const updatedHabit = { ...habit, status: 'Completed' };
+const updatedHabit = { ...habit, status: "Completed" };
 const updatedHabits = [...habits, newHabit];
 ```
 
@@ -596,10 +627,14 @@ const updatedHabits = [...habits, newHabit];
 
 ```javascript
 // ❌ BAD (if list can be reordered/filtered)
-{habits.map((habit, index) => <HabitCard key={index} habit={habit} />)}
+{
+  habits.map((habit, index) => <HabitCard key={index} habit={habit} />);
+}
 
 // ✅ GOOD
-{habits.map(habit => <HabitCard key={habit.id} habit={habit} />)}
+{
+  habits.map((habit) => <HabitCard key={habit.id} habit={habit} />);
+}
 ```
 
 ### ❌ Don't: Create Components That Do Too Much
@@ -611,9 +646,9 @@ function HabitManagementSystem() {
 }
 
 // ✅ GOOD: Split into focused components
-function HabitForm() { }      // Just the form
-function HabitList() { }      // Just the display
-function HabitValidator() { } // Just validation
+function HabitForm() {} // Just the form
+function HabitList() {} // Just the display
+function HabitValidator() {} // Just validation
 ```
 
 ---
@@ -649,40 +684,45 @@ When creating a new UI component:
 
 ```javascript
 // Component file structure
-import React from 'react'        // 1. React
-import Component from './Component'  // 2. Components
-import { helper } from '../utils'    // 3. Utilities
-import './styles.css'               // 4. Styles
+import React from "react"; // 1. React
+import Component from "./Component"; // 2. Components
+import { helper } from "../utils"; // 3. Utilities
+import "./styles.css"; // 4. Styles
 
-function MyComponent({ prop1, onAction }) {  // Destructure props
-  const [state, setState] = useState(init)   // Hooks first
+function MyComponent({ prop1, onAction }) {
+  // Destructure props
+  const [state, setState] = useState(init); // Hooks first
 
-  const handleClick = () => {                // Event handlers
-    onAction?.(data)                         // Optional chaining
-  }
+  const handleClick = () => {
+    // Event handlers
+    onAction?.(data); // Optional chaining
+  };
 
-  if (!prop1) return null                   // Early returns
+  if (!prop1) return null; // Early returns
 
-  return (                                   // Main render
-    <div className="my-component">
-      {/* JSX */}
-    </div>
-  )
+  return (
+    // Main render
+    <div className="my-component">{/* JSX */}</div>
+  );
 }
 
-export default MyComponent                   // Default export
+export default MyComponent; // Default export
 ```
 
 **CSS Pattern:**
+
 ```css
 .component-name {
-  background: var(--bg-primary);   /* Use CSS vars */
+  background: var(--bg-primary); /* Use CSS vars */
   color: var(--text-primary);
-  transition: all 0.2s ease;       /* Smooth transitions */
+  transition: all 0.2s ease; /* Smooth transitions */
 }
 
-@media (max-width: 768px) {        /* Mobile responsive */
-  .component-name { /* adjustments */ }
+@media (max-width: 768px) {
+  /* Mobile responsive */
+  .component-name {
+    /* adjustments */
+  }
 }
 ```
 
@@ -707,4 +747,8 @@ A well-built component in this project should:
 
 ---
 
-*Last updated: Based on StatCard, SummaryCards, and existing component patterns*
+## Review the Work
+
+- \*\*Invoke the ui-ux-reviewer subagent\*\* to review your work and implement the changes suggested.
+
+_Last updated: Based on StatCard, SummaryCards, and existing component patterns_
